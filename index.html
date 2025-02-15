@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Spreadsheets</title>
+    <title>Club Spreadsheet Links</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,101 +16,71 @@
             margin: auto;
             background: white;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .club {
-            margin: 15px 0;
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            border-radius: 5px;
+        .club-button {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-        .club a, .club button {
-            padding: 8px 12px;
+            margin: 10px 0;
+            padding: 10px;
+            background: #007bff;
+            color: white;
             border: none;
-            cursor: pointer;
-            font-size: 14px;
             border-radius: 5px;
-            text-decoration: none;
+            cursor: pointer;
+            width: 100%;
         }
-        .club a {
-            background: white;
-            color: #007bff;
-        }
-        .club button {
-            background: #ffcc00;
-            color: black;
+        .copy-btn {
+            background: #28a745;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h2>Club Spreadsheets</h2>
-
-    <div class="club">
-        <span>Bibliophile Club</span>
-        <a href="https://docs.google.com/spreadsheets/d/1pvTT6vf4tveTAVu7vBgWbfYQVyLqokop01FdpXz0asI/edit?usp=drivesdk" target="_blank">Go to Spreadsheet</a>
-        <button onclick="copyLink('https://docs.google.com/spreadsheets/d/1pvTT6vf4tveTAVu7vBgWbfYQVyLqokop01FdpXz0asI/edit?usp=drivesdk')">Copy Link</button>
+    <div class="container">
+        <h2>Club Spreadsheet Links</h2>
+        <div id="club-list"></div>
     </div>
 
-    <div class="club">
-        <span>Impactors Club</span>
-        <a href="https://docs.google.com/spreadsheets/d/1PoCzrwNmWrODZ4k42wSerU5xN7K_X3PTd0ShfsruVHw/edit?usp=drivesdk" target="_blank">Go to Spreadsheet</a>
-        <button onclick="copyLink('https://docs.google.com/spreadsheets/d/1PoCzrwNmWrODZ4k42wSerU5xN7K_X3PTd0ShfsruVHw/edit?usp=drivesdk')">Copy Link</button>
-    </div>
+    <script>
+        const clubs = [
+            { name: "Bibliophile Club", link: "https://docs.google.com/spreadsheets/d/1pvTT6vf4tveTAVu7vBgWbfYQVyLqokop01FdpXz0asI/edit?usp=drivesdk" },
+            { name: "Impactors Club", link: "https://docs.google.com/spreadsheets/d/1PoCzrwNmWrODZ4k42wSerU5xN7K_X3PTd0ShfsruVHw/edit?usp=drivesdk" },
+            { name: "Quantum Coders Club", link: "https://docs.google.com/spreadsheets/d/1qY8yubcfiHC3psAjlBsxlcgeilSSzFR6-5WS66Vrpdo/edit?usp=drivesdk" },
+            { name: "Photography Club", link: "https://docs.google.com/spreadsheets/d/1gpk6sP5gSXbZynBLu4z9TCW1xqpLg8BcL9Zocra92Vk/edit?usp=drivesdk" },
+            { name: "Project Studio Club", link: "https://docs.google.com/spreadsheets/d/1Ru18MlrqBv3c-_UE7jEkcGQiy_ZIgOzQ5yOm-XTRfgk/edit?usp=drivesdk" },
+            { name: "Yuva Sadhvi Club", link: "https://docs.google.com/spreadsheets/d/16ISUBeHH75izyp4E4M9O1SBsS1FIpYE98gfSYsmJ0I8/edit?usp=drivesdk" },
+            { name: "Melodia Club", link: "https://docs.google.com/spreadsheets/d/1BoZJctJmuCUKg11oif2e5-5LUVOKiIXP2HoS4IHVLPg/edit?usp=drivesdk" },
+            { name: "Aqua Green Club", link: "https://docs.google.com/spreadsheets/d/1A1jlBdHYgE8cDhx1WeL3bXV6uMa4KP-2QDICT7m-bXo/edit?usp=drivesdk" },
+            { name: "Life Savers Club", link: "https://docs.google.com/spreadsheets/d/1Edkf_hpwGNC4bq94EihPnjVzdbvQRI9gS6hCu2pFt4k/edit?usp=drivesdk" },
+            { name: "Edu Waves Club", link: "https://docs.google.com/spreadsheets/d/1GsrmvDuurvY6p2dhefnfHpOrB0axmaKPaVhExrNXxz4/edit?usp=drivesdk" }
+        ];
 
-    <div class="club">
-        <span>Quantum Coders Club</span>
-        <a href="https://docs.google.com/spreadsheets/d/1qY8yubcfiHC3psAjlBsxlcgeilSSzFR6-5WS66Vrpdo/edit?usp=drivesdk" target="_blank">Go to Spreadsheet</a>
-        <button onclick="copyLink('https://docs.google.com/spreadsheets/d/1qY8yubcfiHC3psAjlBsxlcgeilSSzFR6-5WS66Vrpdo/edit?usp=drivesdk')">Copy Link</button>
-    </div>
-
-    <div class="club">
-        <span>Photography Club</span>
-        <a href="https://docs.google.com/spreadsheets/d/1gpk6sP5gSXbZynBLu4z9TCW1xqpLg8BcL9Zocra92Vk/edit?usp=drivesdk" target="_blank">Go to Spreadsheet</a>
-        <button onclick="copyLink('https://docs.google.com/spreadsheets/d/1gpk6sP5gSXbZynBLu4z9TCW1xqpLg8BcL9Zocra92Vk/edit?usp=drivesdk')">Copy Link</button>
-    </div>
-
-    <div class="club">
-        <span>Project Studio Club</span>
-        <a href="https://docs.google.com/spreadsheets/d/1Ru18MlrqBv3c-_UE7jEkcGQiy_ZIgOzQ5yOm-XTRfgk/edit?usp=drivesdk" target="_blank">Go to Spreadsheet</a>
-        <button onclick="copyLink('https://docs.google.com/spreadsheets/d/1Ru18MlrqBv3c-_UE7jEkcGQiy_ZIgOzQ5yOm-XTRfgk/edit?usp=drivesdk')">Copy Link</button>
-    </div>
-
-    <div class="club">
-        <span>Yuva Sadhvi Club</span>
-        <a href="https://docs.google.com/spreadsheets/d/16ISUBeHH75izyp4E4M9O1SBsS1FIpYE98gfSYsmJ0I8/edit?usp=drivesdk" target="_blank">Go to Spreadsheet</a>
-        <button onclick="copyLink('https://docs.google.com/spreadsheets/d/16ISUBeHH75izyp4E4M9O1SBsS1FIpYE98gfSYsmJ0I8/edit?usp=drivesdk')">Copy Link</button>
-    </div>
-
-    <div class="club">
-        <span>Melodia Club</span>
-        <a href="https://docs.google.com/spreadsheets/d/1BoZJctJmuCUKg11oif2e5-5LUVOKiIXP2HoS4IHVLPg/edit?usp=drivesdk" target="_blank">Go to Spreadsheet</a>
-        <button onclick="copyLink('https://docs.google.com/spreadsheets/d/1BoZJctJmuCUKg11oif2e5-5LUVOKiIXP2HoS4IHVLPg/edit?usp=drivesdk')">Copy Link</button>
-    </div>
-
-    <div class="club">
-        <span>Aqua Green Club</span>
-        <a href="https://docs.google.com/spreadsheets/d/1A1jlBdHYgE8cDhx1WeL3bXV6uMa4KP-2QDICT7m-bXo/edit?usp=drivesdk" target="_blank">Go to Spreadsheet</a>
-        <button onclick="copyLink('https://docs.google.com/spreadsheets/d/1A1jlBdHYgE8cDhx1WeL3bXV6uMa4KP-2QDICT7m-bXo/edit?usp=drivesdk')">Copy Link</button>
-    </div>
-
-</div>
-
-<script>
-    function copyLink(link) {
-        navigator.clipboard.writeText(link).then(() => {
-            alert("Link copied to clipboard!");
-        }).catch(err => {
-            console.error("Failed to copy:", err);
+        const clubList = document.getElementById("club-list");
+        
+        clubs.forEach(club => {
+            const div = document.createElement("div");
+            div.innerHTML = `
+                <button class="club-button" onclick="window.open('${club.link}', '_blank')">
+                    ${club.name}
+                    <button class="copy-btn" onclick="copyToClipboard('${club.link}')">Copy Link</button>
+                </button>
+            `;
+            clubList.appendChild(div);
         });
-    }
-</script>
 
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Link copied!");
+            });
+        }
+    </script>
 </body>
 </html>
